@@ -9,15 +9,15 @@
 #include <fstream>
 #include <sstream>
 
-
 using namespace std;
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
 
     cout << "How is world" << endl;
 
-// {
-//     cout << "Hello, World" << endl;
+    // {
+    //     cout << "Hello, World" << endl;
 
     if (argc <= 1)
     {
@@ -25,7 +25,7 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    ItemType * rawData;
+    ItemType *rawData;
     ItemType item;
     int input;
     int length = 0;
@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
     if (file.is_open())
     {
         //    cout << "opened file" << endl;
-            file >> input;
+        file >> input;
         while (!file.eof())
         {
             // cout << length << endl;
@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
         cout << "Failed to open the input file1" << endl;
         return 1;
     }
-    
+
     rawData = new ItemType[length];
     cout << "Length: " << length << endl;
 
@@ -82,9 +82,42 @@ int main(int argc, char **argv) {
 
     cout << rawData[0].getValue() << endl;
 
+    // Menu
+    cout << "selection-sort (s)merge-sort (m)heap-sort (h)quick-sort-fp(q)quick-sort-rp (r)" << endl;
+
+    string choice;
+    bool running = true;
+    Sorting sorter;
+
+    // Begin user choice menu
+    while (running)
+    {
+        cout << "Enter the algorithm: ";
+        cin >> choice;
+
+        if (choice.compare("s") == 0)
+        {
+            sorter.SelectionSort(rawData);
+        }
+        else if (choice.compare("m") == 0)
+        {
+            sorter.MergeSort(rawData);
+        }
+        else if (choice.compare("h") == 0)
+        {
+            sorter.HeapSort(rawData);
+        }
+        else if (choice.compare("r") == 0)
+        {
+            sorter.QuickSort_R(rawData);
+        }
+        else if (choice.compare("q") == 0)
+        {
+            sorter.QuickSort_FP(rawData);
+        }
+    }
+
     // at end of main
     delete[] rawData;
     // get length of input
-
-
 }
