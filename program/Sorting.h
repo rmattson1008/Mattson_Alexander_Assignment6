@@ -13,7 +13,7 @@ public:
     int MergeSort(ItemType * unsorted,  int first, int last);
     int QuickSort_R(ItemType * unsorted);
     int QuickSort_FP(ItemType * unsorted);
-    void Merge(ItemType values[], int leftFirst, int leftLast, int rightFirst, int rightLast)
+    void Merge(ItemType values[], int leftFirst, int leftLast, int rightFirst, int rightLast);
 };
 
 #endif
