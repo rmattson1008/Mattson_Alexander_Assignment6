@@ -1,5 +1,5 @@
 #include "ItemType.h"
-#include "BinaryTree.h"
+#include "Heap.h"
 #include <exception>
 #include <cstddef>
 #include <iostream>
@@ -11,7 +11,9 @@
 
 using namespace std;
 
-int main(int argc, char **argv)
+int main(int argc, char **argv) {
+
+    cout << "How is world" << endl;
 
 // {
 //     cout << "Hello, World" << endl;
@@ -22,7 +24,7 @@ int main(int argc, char **argv)
 //         return 1;
 //     }
 
-//     BinaryTree * bossTree = new BinaryTree();
+//     Heap * bossTree = new Heap();
 
 //     // Read in item input
 //     ItemType item;
