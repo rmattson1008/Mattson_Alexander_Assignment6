@@ -20,4 +20,4 @@ run:
 		g++ $(CXXFLAGS) -c ItemType.cpp
 		g++ -o main main.o ItemType.o Heap.o
 
-		./main input.txt
+		./main ordered.txt
