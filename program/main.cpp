@@ -10,6 +10,7 @@
 #include <sstream>
 
 using namespace std;
+int COUNT;
 
 int main(int argc, char **argv)
 {
@@ -83,7 +84,7 @@ int main(int argc, char **argv)
     // cout << rawData[0].getValue() << endl;
 
     // Menu
-    cout << "selection-sort (s)merge-sort (m)heap-sort (h)quick-sort-fp(q)quick-sort-rp (r)" << endl;
+    cout << "selection-sort (s), merge-sort (m), heap-sort (h), quick-sort-fp (q), quick-sort-rp (r)" << endl;
 
     string choice;
     bool running = true;
@@ -121,7 +122,7 @@ int main(int argc, char **argv)
         else if (choice.compare("q") == 0)
         {
             // comps = sorter.QuickSort_FP(rawData);
-            cout << "Comparisons: " << comps<< endl;
+            cout << "Comparisons: " << comps << endl;
         } else if (choice.compare("e") == 0)
         {
             
