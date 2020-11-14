@@ -10,30 +10,27 @@
 
 
 
-int Sorting::MergeSort(ItemType  values[], int first, int last )		
+int Sorting::MergeSort(ItemType  values[], int first, int last, int MAX_LENGTH )		
 //  Pre:   first <= last
 //  Post: Array values[first..last] sorted into 
 //    ascending order.
 {
+    // cout << "Entered MergeSort" << endl;
 	if  ( first < last ) 	           //  general case
 	{	
       int  middle = ( first  +  last ) / 2;
-		MergeSort ( values, first,      middle );	
-		MergeSort ( values, middle + 1, last   );
+		MergeSort ( values, first,middle, MAX_LENGTH);	
+		MergeSort ( values, middle + 1, last, MAX_LENGTH);
 
-		// now  merge two subarrays
-		// values [ first . . . middle ] with 
-		// values [ middle + 1,  . . . last ].
-
-		Merge(values,  first, middle, middle + 1, last);
+		Merge(values,  first, middle, middle + 1, last, MAX_LENGTH);
 	}           
 }
 
-void Sorting::Merge(ItemType values[], int leftFirst, int leftLast, int rightFirst, int rightLast){
+void Sorting::Merge(ItemType values[], int leftFirst, int leftLast, int rightFirst, int rightLast, int MAX_LENGTH){
     int index = leftFirst;
     int saveFirst = leftFirst;
-    int length = sizeof(values)/sizeof(values[0]);
-    ItemType * tempArray = new ItemType[length];
+    // cout << "Array length " << length <<  endl;
+    ItemType tempArray[MAX_LENGTH];
 
     while ((leftFirst <= leftLast) && (rightFirst <= rightLast)){
         if (values[leftFirst].compareTo(values[rightFirst]) == ItemType::LESS) {
@@ -59,7 +56,7 @@ void Sorting::Merge(ItemType values[], int leftFirst, int leftLast, int rightFir
         values[index] = tempArray[index];
     }
 }
-
+/*
 void QuickSort( ItemType  values[ ], int first, int last )	
 	
 //  Pre:   first <= last
@@ -76,4 +73,5 @@ void QuickSort( ItemType  values[ ], int first, int last )
 	   QuickSort(values,  splitPoint + 1,  last);
 	}          
 } ;
+*/
 

@@ -28,7 +28,7 @@ int main(int argc, char **argv)
     ItemType *rawData;
     ItemType item;
     int input;
-    int length = 0;
+    int MAX_LENGTH = 0;
     std::fstream file;
     file.open(argv[1], fstream::in);
 
@@ -38,9 +38,9 @@ int main(int argc, char **argv)
         file >> input;
         while (!file.eof())
         {
-            // cout << length << endl;
+            // cout << MAX_LENGTH << endl;
             // cout << input << endl;
-            length += 1;
+            MAX_LENGTH += 1;
             item.initialize(input);
             //cin.get(); // error handling
             file >> input;
@@ -52,8 +52,8 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    rawData = new ItemType[length];
-    cout << "Length: " << length << endl;
+    rawData = new ItemType[MAX_LENGTH];
+    cout << "MAX_LENGTH: " << MAX_LENGTH << endl;
 
     //     // Read in item input
     std::fstream file2;
@@ -88,6 +88,7 @@ int main(int argc, char **argv)
     string choice;
     bool running = true;
     Sorting sorter;
+    int comps = 0;
 
     // Begin user choice menu
     while (running)
@@ -97,23 +98,35 @@ int main(int argc, char **argv)
 
         if (choice.compare("s") == 0)
         {
-            sorter.SelectionSort(rawData);
+            // comps = sorter.SelectionSort(rawData);
+            cout << "Comparisons: " << comps<< endl;
         }
         else if (choice.compare("m") == 0)
         {
-            sorter.MergeSort(rawData);
+            int first = 0;
+            int last = MAX_LENGTH - 1;
+            comps = sorter.MergeSort(rawData, first, last, MAX_LENGTH);
+            cout << "Comparisons: " << comps << endl;
         }
         else if (choice.compare("h") == 0)
         {
-            sorter.HeapSort(rawData);
+            // comps = sorter.HeapSort(rawData);
+            cout << "Comparisons: " << comps<< endl;
         }
         else if (choice.compare("r") == 0)
         {
-            sorter.QuickSort_R(rawData);
+            // comps = sorter.QuickSort_R(rawData);
+            cout << "Comparisons: " << comps<< endl;
         }
         else if (choice.compare("q") == 0)
         {
-            sorter.QuickSort_FP(rawData);
+            // comps = sorter.QuickSort_FP(rawData);
+            cout << "Comparisons: " << comps<< endl;
+        } else if (choice.compare("e") == 0)
+        {
+            
+            cout << "Exiting..." << endl;
+            return 0;
         }else { 
             cout << "Command not recognized. Try again" << endl;
         }
@@ -121,5 +134,5 @@ int main(int argc, char **argv)
 
     // at end of main
     delete[] rawData;
-    // get length of input
+    // get MAX_LENGTH of input
 }
