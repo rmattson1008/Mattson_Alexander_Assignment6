@@ -16,17 +16,19 @@ int Sorting::MergeSort(ItemType  values[], int first, int last, int MAX_LENGTH)
 //    ascending order.
 {
     int count = 0;
+    // cout << count << endl;
     // cout << "Entered MergeSort" << endl;
 	if  ( first < last ) 	           //  general case
 	{	
-      int  middle = ( first  +  last ) / 2;
-		count = count + MergeSort( values, first,middle, MAX_LENGTH);	
-		count = count + MergeSort( values, middle + 1, last, MAX_LENGTH);
-        Merge(values,  first, middle, middle + 1, last, MAX_LENGTH);
-		return count ;
+        int  middle = ( first  +  last ) / 2;
+		count += MergeSort( values, first , middle, MAX_LENGTH);	
+		count += MergeSort( values, middle + 1, last, MAX_LENGTH);
+        count += Merge(values, first, middle, middle + 1, last, MAX_LENGTH);
+		// return count;
 	}           
+    return count;
 }
-
+// 1501
 int Sorting::Merge(ItemType values[], int leftFirst, int leftLast, int rightFirst, int rightLast, int MAX_LENGTH){
     int index = leftFirst;
     int saveFirst = leftFirst;
@@ -59,8 +61,8 @@ int Sorting::Merge(ItemType values[], int leftFirst, int leftLast, int rightFirs
     for (index = saveFirst; index <= rightLast; index++) {
         values[index] = tempArray[index];
     }
-    cout << "went through " << MAX_LENGTH << endl;
-    cout << "count is " << count << endl;;
+    // cout << "went through " << MAX_LENGTH << endl;
+    // cout << "count is " << count << endl;;
     return count;
 }
 /*
