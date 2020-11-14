@@ -39,7 +39,7 @@ int main(int argc, char **argv)
         while (!file.eof())
         {
             // cout << length << endl;
-            cout << input << endl;
+            // cout << input << endl;
             length += 1;
             item.initialize(input);
             //cin.get(); // error handling
@@ -80,7 +80,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    cout << rawData[0].getValue() << endl;
+    // cout << rawData[0].getValue() << endl;
 
     // Menu
     cout << "selection-sort (s)merge-sort (m)heap-sort (h)quick-sort-fp(q)quick-sort-rp (r)" << endl;
