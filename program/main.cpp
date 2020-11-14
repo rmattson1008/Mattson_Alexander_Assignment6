@@ -121,7 +121,8 @@ int main(int argc, char **argv)
         }
         else if (choice.compare("q") == 0)
         {
-            // comps = sorter.QuickSort_FP(rawData);
+            // comps = 
+            sorter.QuickSort_FP(rawData, 0, MAX_LENGTH);
             cout << "Comparisons: " << comps << endl;
         } else if (choice.compare("e") == 0)
         {

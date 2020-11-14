@@ -11,8 +11,13 @@ public:
 
     //recursive ones
     int MergeSort(ItemType * unsorted,  int first, int last, int MAX_LENGTH);
+    // int QuickSort_R(ItemType * unsorted);
     int QuickSort_R(ItemType * unsorted);
-    int QuickSort_FP(ItemType * unsorted);
+    void QuickSort_FP( ItemType  values[ ], int first, int last);	
+    
+
+    int Split(ItemType values[], int first, int last);
+    void swap(ItemType* a, ItemType* b);  
     int Merge(ItemType values[], int leftFirst, int leftLast, int rightFirst, int rightLast, int MAX_LENGTH);
 };
 

@@ -65,22 +65,46 @@ int Sorting::Merge(ItemType values[], int leftFirst, int leftLast, int rightFirs
     // cout << "count is " << count << endl;;
     return count;
 }
-/*
-void QuickSort( ItemType  values[ ], int first, int last )	
+// TODO cite geeksforgeeks
+
+void Sorting::QuickSort_FP(ItemType values[ ], int first, int last )	
 	
 //  Pre:   first <= last
 //  Post: Sorts array values[ first .  . last ] into ascending order
 {
+    cout << "entered quick" << endl;
 	if  ( first < last ) 	         //  general case
 	{	
-     int  splitPoint ;
-	   Split( values, first, last, splitPoint ) ;	
+        int splitPoint = Split(values, first, last);
+	//    Split(values, first, last, splitPoint ) ;	
 	   // values [first]..values[splitPoint - 1] <= splitVal
 	   // values  [splitPoint] = splitVal
 	   // values [splitPoint + 1]..values[last] > splitVal
-	   QuickSort(values,  first,  splitPoint - 1);
-	   QuickSort(values,  splitPoint + 1,  last);
+	   QuickSort_FP(values,  first,  splitPoint - 1);
+	   QuickSort_FP(values,  splitPoint + 1,  last);
 	}          
-} ;
-*/
+} 
+int Sorting::Split(ItemType values[], int first, int last) {
+    ItemType piv = values[last];
+    int i = first - 1;
+
+    for (int j = first; j <= last - 1; j++)  
+    {  
+        // If current element is smaller than the pivot  
+        if (values[j].compareTo(piv) == ItemType::LESS)  
+        {  
+            i++; // increment index of smaller element  
+            swap(&values[i], &values[j]);  
+        }  
+    }  
+    swap(&values[i + 1], &values[last]);  
+    return (i + 1); 
+}
+
+void Sorting::swap(ItemType * a, ItemType* b)  
+{  
+    ItemType t = *a;   
+    *a = *b;  
+    *b = t;  
+} 
 
