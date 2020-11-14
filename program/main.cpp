@@ -114,6 +114,8 @@ int main(int argc, char **argv)
         else if (choice.compare("q") == 0)
         {
             sorter.QuickSort_FP(rawData);
+        }else { 
+            cout << "Command not recognized. Try again" << endl;
         }
     }
 

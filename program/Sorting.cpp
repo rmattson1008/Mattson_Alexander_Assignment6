@@ -59,3 +59,21 @@ void Sorting::Merge(ItemType values[], int leftFirst, int leftLast, int rightFir
         values[index] = tempArray[index];
     }
 }
+
+void QuickSort( ItemType  values[ ], int first, int last )	
+	
+//  Pre:   first <= last
+//  Post: Sorts array values[ first .  . last ] into ascending order
+{
+	if  ( first < last ) 	         //  general case
+	{	
+     int  splitPoint ;
+	   Split( values, first, last, splitPoint ) ;	
+	   // values [first]..values[splitPoint - 1] <= splitVal
+	   // values  [splitPoint] = splitVal
+	   // values [splitPoint + 1]..values[last] > splitVal
+	   QuickSort(values,  first,  splitPoint - 1);
+	   QuickSort(values,  splitPoint + 1,  last);
+	}          
+} ;
+
