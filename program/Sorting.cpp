@@ -128,20 +128,8 @@ int Sorting::SplitRandomly(ItemType values[], int first, int last) {
     cout << "Random Pivot index: " << randomIndex << endl;
     ItemType piv = values[randomIndex];
     int i = first - 1;
-    // g_count++;
-
-    for (int j = first; j <= last - 1; j++)  
-    {  
-          
-        g_count++;
-        if (values[j].compareTo(piv) == ItemType::LESS)  
-        {  
-            i++;  
-            swap(&values[randomIndex], &values[last]);
-        }  
-    }  
     swap(&values[randomIndex], &values[last]);  
-    return (i + 1); 
+    return Split(values, first, last);
 }
 
 int Sorting::getComparisons() {
