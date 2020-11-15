@@ -17,6 +17,7 @@ Sorting::Sorting(int size){
 
 
 //This recursively pushes the count back up, doesn't use global variable tracker
+// sorts the array we pass in
 int Sorting::MergeSort(ItemType  values[], int first, int last, int MAX_LENGTH)		
 {
     int count = 0;
@@ -43,6 +44,7 @@ int Sorting::Merge(ItemType values[], int leftFirst, int leftLast, int rightFirs
     while ((leftFirst <= leftLast) && (rightFirst <= rightLast)){
         // cout << "making a comparison" << endl;
         count++;
+        g_count++;
         if (values[leftFirst].compareTo(values[rightFirst]) == ItemType::LESS) {
             tempArray[index] = values[leftFirst];
             leftFirst++;
@@ -141,9 +143,6 @@ int Sorting::SplitRandomly(ItemType values[], int first, int last) {
     swap(&values[randomIndex], &values[last]);  
     return (i + 1); 
 }
-
-
-
 
 int Sorting::getComparisons() {
     return g_count;
