@@ -11,7 +11,7 @@ public:
     int HeapSort(ItemType * unsorted);
 
     //recursive ones
-    int MergeSort(ItemType * unsorted,  int first, int last, int MAX_LENGTH);
+    int MergeSort(ItemType * unsorted,  int first, int last);
     // int QuickSort_R(ItemType * unsorted);
     int QuickSort_R(ItemType values[ ], int first, int last);
     int QuickSort_FP( ItemType  values[ ], int first, int last);	
@@ -20,7 +20,7 @@ public:
     int Split(ItemType values[], int first, int last);
     int SplitRandomly(ItemType values[], int first, int last);
     void swap(ItemType* a, ItemType* b);  
-    int Merge(ItemType values[], int leftFirst, int leftLast, int rightFirst, int rightLast, int MAX_LENGTH);
+    int Merge(ItemType values[], int leftFirst, int leftLast, int rightFirst, int rightLast);
     
     void resetComparisons();
     int getComparisons();

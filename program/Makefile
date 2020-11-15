@@ -22,4 +22,6 @@ run:
 		g++ $(CXXFLAGS) -c Sorting.cpp
 		g++ -o main main.o ItemType.o Heap.o Sorting.o
 
-		./main random.txt
+		# ./main ordered.txt
+		./main reverse.txt
+		# ./main random.txt

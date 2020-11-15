@@ -18,7 +18,7 @@ Sorting::Sorting(int size){
 
 //This recursively pushes the count back up, doesn't use global variable tracker
 // sorts the array we pass in
-int Sorting::MergeSort(ItemType  values[], int first, int last, int MAX_LENGTH)		
+int Sorting::MergeSort(ItemType  values[], int first, int last)		
 {
     int count = 0;
     // cout << count << endl;
@@ -26,15 +26,15 @@ int Sorting::MergeSort(ItemType  values[], int first, int last, int MAX_LENGTH)
 	if  ( first < last ) 	           //  general case
 	{	
         int  middle = ( first  +  last ) / 2;
-		count += MergeSort( values, first , middle, MAX_LENGTH);	
-		count += MergeSort( values, middle + 1, last, MAX_LENGTH);
-        count += Merge(values, first, middle, middle + 1, last, MAX_LENGTH);
+		count += MergeSort( values, first , middle);	
+		count += MergeSort( values, middle + 1, last);
+        count += Merge(values, first, middle, middle + 1, last);
 		// return count;
 	}           
     return count;
 }
 // 1501
-int Sorting::Merge(ItemType values[], int leftFirst, int leftLast, int rightFirst, int rightLast, int MAX_LENGTH){
+int Sorting::Merge(ItemType values[], int leftFirst, int leftLast, int rightFirst, int rightLast){
     int index = leftFirst;
     int saveFirst = leftFirst;
     int count = 0;
@@ -125,7 +125,7 @@ int Sorting::Split(ItemType values[], int first, int last) {
 
 int Sorting::SplitRandomly(ItemType values[], int first, int last) {
     int randomIndex = first + rand() % (last - first);
-    cout << "Random Pivot index: " << randomIndex << endl;
+    // cout << "Random Pivot index: " << randomIndex << endl;
     ItemType piv = values[randomIndex];
     int i = first - 1;
     swap(&values[randomIndex], &values[last]);  
