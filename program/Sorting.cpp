@@ -8,7 +8,7 @@
 #include <ostream>
 #include <string>
 
-
+// counting will be alot easier if we instantiate an object
 
 int Sorting::MergeSort(ItemType  values[], int first, int last, int MAX_LENGTH)		
 //  Pre:   first <= last
@@ -67,12 +67,13 @@ int Sorting::Merge(ItemType values[], int leftFirst, int leftLast, int rightFirs
 }
 // TODO cite geeksforgeeks
 
-void Sorting::QuickSort_FP(ItemType values[ ], int first, int last )	
+int Sorting::QuickSort_FP(ItemType values[ ], int first, int last )	
 	
 //  Pre:   first <= last
 //  Post: Sorts array values[ first .  . last ] into ascending order
 {
     cout << "entered quick" << endl;
+    int count = 0;
 	if  ( first < last ) 	         //  general case
 	{	
         int splitPoint = Split(values, first, last);
@@ -80,9 +81,10 @@ void Sorting::QuickSort_FP(ItemType values[ ], int first, int last )
 	   // values [first]..values[splitPoint - 1] <= splitVal
 	   // values  [splitPoint] = splitVal
 	   // values [splitPoint + 1]..values[last] > splitVal
-	   QuickSort_FP(values,  first,  splitPoint - 1);
-	   QuickSort_FP(values,  splitPoint + 1,  last);
-	}          
+	   count += QuickSort_FP(values,  first,  splitPoint - 1);
+	   count += QuickSort_FP(values,  splitPoint + 1,  last);
+	}    
+    return count;      
 } 
 int Sorting::Split(ItemType values[], int first, int last) {
     ItemType piv = values[last];
@@ -91,6 +93,7 @@ int Sorting::Split(ItemType values[], int first, int last) {
     for (int j = first; j <= last - 1; j++)  
     {  
         // If current element is smaller than the pivot  
+        g_count++;
         if (values[j].compareTo(piv) == ItemType::LESS)  
         {  
             i++; // increment index of smaller element  
@@ -99,6 +102,15 @@ int Sorting::Split(ItemType values[], int first, int last) {
     }  
     swap(&values[i + 1], &values[last]);  
     return (i + 1); 
+}
+
+int Sorting::getComparisons() {
+    return g_count;
+}
+
+void Sorting::resetComparisons() {
+    g_count = 0;
+    return;
 }
 
 void Sorting::swap(ItemType * a, ItemType* b)  

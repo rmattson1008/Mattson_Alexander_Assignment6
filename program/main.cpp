@@ -122,8 +122,9 @@ int main(int argc, char **argv)
         else if (choice.compare("q") == 0)
         {
             // comps = 
+            sorter.resetComparisons();
             sorter.QuickSort_FP(rawData, 0, MAX_LENGTH);
-            cout << "Comparisons: " << comps << endl;
+            cout << "Comparisons: " << sorter.getComparisons() << endl;
         } else if (choice.compare("e") == 0)
         {
             
