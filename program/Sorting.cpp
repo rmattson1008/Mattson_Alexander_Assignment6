@@ -7,13 +7,17 @@
 #include <iostream>
 #include <ostream>
 #include <string>
+#include <cstdlib>
 
 // counting will be alot easier if we instantiate an object
+Sorting::Sorting(int size){
+    MAX_LENGTH = size;
+    g_count = 0;
+}
 
+
+//This recursively pushes the count back up, doesn't use global variable tracker
 int Sorting::MergeSort(ItemType  values[], int first, int last, int MAX_LENGTH)		
-//  Pre:   first <= last
-//  Post: Array values[first..last] sorted into 
-//    ascending order.
 {
     int count = 0;
     // cout << count << endl;
@@ -65,44 +69,81 @@ int Sorting::Merge(ItemType values[], int leftFirst, int leftLast, int rightFirs
     // cout << "count is " << count << endl;;
     return count;
 }
-// TODO cite geeksforgeeks
+int Sorting::QuickSort_R(ItemType values[ ], int first, int last )	
+	
+//  Pre:   first <= last
+//  Post: Sorts array values[ first .  . last ] into ascending order
+{
+    // cout << "entered quick" << endl;
+    // int count = 0;
+	if  ( first < last ) 	         //  general case
+	{	
+        int splitPoint = SplitRandomly(values, first, last);
 
+	   QuickSort_R(values,  first,  splitPoint - 1);
+	   QuickSort_R(values,  splitPoint + 1,  last);
+	}    
+    return 0;      
+} 
+
+// TODO cite geeksforgeeks
 int Sorting::QuickSort_FP(ItemType values[ ], int first, int last )	
 	
 //  Pre:   first <= last
 //  Post: Sorts array values[ first .  . last ] into ascending order
 {
-    cout << "entered quick" << endl;
+    // cout << "entered quick" << endl;
     int count = 0;
 	if  ( first < last ) 	         //  general case
 	{	
         int splitPoint = Split(values, first, last);
-	//    Split(values, first, last, splitPoint ) ;	
-	   // values [first]..values[splitPoint - 1] <= splitVal
-	   // values  [splitPoint] = splitVal
-	   // values [splitPoint + 1]..values[last] > splitVal
+
 	   count += QuickSort_FP(values,  first,  splitPoint - 1);
 	   count += QuickSort_FP(values,  splitPoint + 1,  last);
 	}    
     return count;      
 } 
+
 int Sorting::Split(ItemType values[], int first, int last) {
     ItemType piv = values[last];
     int i = first - 1;
 
     for (int j = first; j <= last - 1; j++)  
-    {  
-        // If current element is smaller than the pivot  
+    {    
         g_count++;
         if (values[j].compareTo(piv) == ItemType::LESS)  
         {  
-            i++; // increment index of smaller element  
+            i++;  
             swap(&values[i], &values[j]);  
         }  
     }  
     swap(&values[i + 1], &values[last]);  
     return (i + 1); 
 }
+
+int Sorting::SplitRandomly(ItemType values[], int first, int last) {
+    int randomIndex = first + rand() % (last - first);
+    cout << "Random Pivot index: " << randomIndex << endl;
+    ItemType piv = values[randomIndex];
+    int i = first - 1;
+    // g_count++;
+
+    for (int j = first; j <= last - 1; j++)  
+    {  
+          
+        g_count++;
+        if (values[j].compareTo(piv) == ItemType::LESS)  
+        {  
+            i++;  
+            swap(&values[randomIndex], &values[last]);
+        }  
+    }  
+    swap(&values[randomIndex], &values[last]);  
+    return (i + 1); 
+}
+
+
+
 
 int Sorting::getComparisons() {
     return g_count;

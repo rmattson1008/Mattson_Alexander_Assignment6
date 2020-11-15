@@ -88,8 +88,8 @@ int main(int argc, char **argv)
 
     string choice;
     bool running = true;
-    Sorting sorter;
-    int comps = 0;
+    Sorting * sorter = new Sorting(MAX_LENGTH);
+    int comps = 0; // delete
 
     // Begin user choice menu
     while (running)
@@ -99,32 +99,33 @@ int main(int argc, char **argv)
 
         if (choice.compare("s") == 0)
         {
-            // comps = sorter.SelectionSort(rawData);
+            // comps = sorter->SelectionSort(rawData);
             cout << "Comparisons: " << comps<< endl;
         }
         else if (choice.compare("m") == 0)
         {
             int first = 0;
             int last = MAX_LENGTH - 1;
-            comps = sorter.MergeSort(rawData, first, last, MAX_LENGTH);
+            comps = sorter->MergeSort(rawData, first, last, MAX_LENGTH);
             cout << "Comparisons: " << comps << endl;
         }
         else if (choice.compare("h") == 0)
         {
-            // comps = sorter.HeapSort(rawData);
+            // comps = sorter->HeapSort(rawData);
             cout << "Comparisons: " << comps<< endl;
         }
         else if (choice.compare("r") == 0)
         {
-            // comps = sorter.QuickSort_R(rawData);
-            cout << "Comparisons: " << comps<< endl;
+            sorter->resetComparisons();
+            sorter->QuickSort_R(rawData, 0, MAX_LENGTH);
+            cout << "Comparisons: " << sorter->getComparisons() << endl;
         }
         else if (choice.compare("q") == 0)
         {
             // comps = 
-            sorter.resetComparisons();
-            sorter.QuickSort_FP(rawData, 0, MAX_LENGTH);
-            cout << "Comparisons: " << sorter.getComparisons() << endl;
+            sorter->resetComparisons();
+            sorter->QuickSort_FP(rawData, 0, MAX_LENGTH);
+            cout << "Comparisons: " << sorter->getComparisons() << endl;
         } else if (choice.compare("e") == 0)
         {
             
@@ -137,5 +138,6 @@ int main(int argc, char **argv)
 
     // at end of main
     delete[] rawData;
+    delete sorter;
     // get MAX_LENGTH of input
 }
