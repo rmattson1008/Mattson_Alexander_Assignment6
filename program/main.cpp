@@ -162,5 +162,4 @@ int main(int argc, char **argv)
     // at end of main
     delete[] data;
     delete sorter;
-    // get MAX_LENGTH of input
 }

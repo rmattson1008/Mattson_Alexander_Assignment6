@@ -9,6 +9,8 @@
 #include <string>
 #include <cstdlib>
 
+//TODO comments
+
 // counting will be alot easier if we instantiate an object
 Sorting::Sorting(int size){
     MAX_LENGTH = size;
