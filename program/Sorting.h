@@ -7,6 +7,7 @@ class Sorting {
 
 public:
     Sorting(int size);
+    // Deconstructor- only thing to delete is data array created in main
     int SelectionSort(ItemType * unsorted);
     int HeapSort(ItemType * unsorted);
 

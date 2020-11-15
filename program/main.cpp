@@ -12,17 +12,19 @@
 using namespace std;
 int COUNT;
 
-void Print(ItemType array[], int lastIndex) {
-    int i = 0; 
-    while (i <= 5) {
+void Print(ItemType array[], int lastIndex)
+{
+    int i = 0;
+    while (i <= 5)
+    {
         cout << array[i].getValue() << " ";
         i++;
     }
     // cout << "I + 1: " << i;
     cout << ".......... ";
     // cout << array[lastIndex-3].getValue() << " ";
-    cout << array[lastIndex-2].getValue() << " ";
-    cout << array[lastIndex-1].getValue() << " ";
+    cout << array[lastIndex - 2].getValue() << " ";
+    cout << array[lastIndex - 1].getValue() << " ";
     cout << array[lastIndex].getValue() << endl;
 }
 
@@ -68,7 +70,7 @@ int main(int argc, char **argv)
     }
 
     data = new ItemType[MAX_LENGTH];
-    cout << "MAX_LENGTH: " << MAX_LENGTH << endl; 
+    cout << "MAX_LENGTH: " << MAX_LENGTH << endl;
 
     //     // Read in item input
     std::fstream file2;
@@ -102,8 +104,8 @@ int main(int argc, char **argv)
 
     string choice;
     bool running = true;
-    Sorting * sorter = new Sorting(MAX_LENGTH - 1);
-    int comps = 0; // delete
+    Sorting *sorter = new Sorting(MAX_LENGTH - 1);
+
     Print(data, MAX_LENGTH - 1);
     // cout << data[MAX_LENGTH].getValue() << endl;
 
@@ -112,50 +114,49 @@ int main(int argc, char **argv)
     {
         cout << "Enter the algorithm: ";
         cin >> choice;
+        sorter->resetComparisons();
 
         if (choice.compare("s") == 0)
         {
-            // comps = sorter->SelectionSort(data);
-            cout << "Comparisons: " << comps<< endl;
+            // cout << "Comparisons: " << sorter->getComparisons() << endl;
+            Print(data, MAX_LENGTH - 1);
+            cout << "\t#Selection-sort comparison: ";
         }
         else if (choice.compare("m") == 0)
         {
-            sorter->resetComparisons();
-            int first = 0;
-            int last = MAX_LENGTH -1;
-            comps = sorter->MergeSort(data, first, last);
-            cout << "Comparisons: " << comps << endl;
-            Print(data, last);
-            cout << "Comparisons: " << sorter->getComparisons() << endl;
+            sorter->MergeSort(data, 0, MAX_LENGTH - 1);
+            Print(data, MAX_LENGTH - 1);
+            cout << "\t#Merge-sort comparison: ";
         }
         else if (choice.compare("h") == 0)
         {
-            // comps = sorter->HeapSort(data);
-            cout << "Comparisons: " << comps<< endl;
+            // sorter->HeapSort_R(data, 0, MAX_LENGTH - 1);
+            cout << "\t#Heap-sort comparison: ";
         }
         else if (choice.compare("r") == 0)
         {
-            sorter->resetComparisons();
             sorter->QuickSort_R(data, 0, MAX_LENGTH - 1);
             Print(data, MAX_LENGTH - 1);
-            cout << "Comparisons: " << sorter->getComparisons() << endl;
+            cout << "\t#Quick-sort-rp comparison: ";
         }
         else if (choice.compare("q") == 0)
         {
-            // comps = 
-            sorter->resetComparisons();
             sorter->QuickSort_FP(data, 0, MAX_LENGTH - 1);
             Print(data, MAX_LENGTH - 1);
-            cout << "Comparisons: " << sorter->getComparisons() << endl;
-            // cout << data[MAX_LENGTH].getValue() << endl;
-        } else if (choice.compare("e") == 0)
+            cout << "\t#Quick-sort-fp comparison: ";
+        }
+        else if (choice.compare("e") == 0)
         {
-            
             cout << "Exiting..." << endl;
             return 0;
-        }else { 
+        }
+        else
+        {
             cout << "Command not recognized. Try again" << endl;
         }
+        cout << sorter->getComparisons() << endl;
+        cout << endl;
+        return 0;
     }
 
     // at end of main
