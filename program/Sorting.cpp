@@ -8,6 +8,8 @@
 #include <ostream>
 #include <string>
 #include <cstdlib>
+#include <algorithm>
+
 
 //TODO comments
 
