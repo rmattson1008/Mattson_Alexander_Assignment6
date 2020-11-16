@@ -27,7 +27,6 @@ public:
     int getComparisons();
     int g_count;
     int MAX_LENGTH;
-    int hCount = 0;
     
 };
 
