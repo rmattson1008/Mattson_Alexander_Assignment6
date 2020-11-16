@@ -17,6 +17,25 @@ Sorting::Sorting(int size){
     g_count = 0;
 }
 
+int Sorting::SelectionSort(ItemType values[], int numValues) {
+  count = 0;
+  int endIndex = numValues - 1;
+  for (int current = 0; current < endIndex; current++) {
+    swap(values[current], values[MinIndex(values, current, endIndex)]);
+  }
+  return count;
+}
+
+int Sorting::MinIndex(ItemType values[], int start, int end) {
+  int indexOfMin = start;
+  for (int index = start + 1; index <= end; index++){
+    if (values[index].compareTo(values[indexOfMin]) == ItemType:: LESS) { //< values[indexOfMin])
+      indexOfMin = index;
+    }
+    count++;
+  }
+  return indexOfMin;
+}
 
 //This recursively pushes the count back up, doesn't use global variable tracker
 // sorts the array we pass in
