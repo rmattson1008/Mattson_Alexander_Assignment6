@@ -8,8 +8,10 @@ class Sorting {
 public:
     Sorting(int size);
     // Deconstructor- only thing to delete is data array created in main
-    int SelectionSort(ItemType * unsorted);
-    int HeapSort(ItemType * unsorted);
+    int MinIndex(ItemType values[], int start, int end);
+  int SelectionSort(ItemType values[], int numValues);
+  int HeapSort(ItemType * unsorted);
+
 
     //recursive ones
     int MergeSort(ItemType * unsorted,  int first, int last);
